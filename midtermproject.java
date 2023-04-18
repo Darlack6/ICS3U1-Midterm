@@ -24,10 +24,12 @@ public class midtermproject {
 		keypress=con.getChar();
 		if(keypress==' '){
 			con.clear();
-			con.setDrawColor(000000);
+			con.setDrawColor(Color.BLACK);
 			con.fillRect(550,600,500,300);
-			con.println("You successfully smuggled a fake bomb.");
+			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 50); 
+			con.setDrawColor(Color.WHITE);
+			con.setDrawFont(montserrat);
+			con.drawString("You successfully smuggled a fake bomb.",350,360);
 		}
 	}
-
 }
