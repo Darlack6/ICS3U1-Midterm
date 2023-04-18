@@ -49,6 +49,15 @@ public class midtermproject {
 		if(keypress==' '){
 			con.clear();
 			con.drawImage(scene2,0,0);
+			con.setDrawColor(Color.WHITE);
+			con.fillRoundRect(20,20,300,200,10,10);
+			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 23); 
+			con.setDrawColor(Color.BLACK);
+			con.setDrawFont(montserrat);
+			con.drawString("To unlock the safe, you", 25, 25);
+			con.drawString("need to solve a math",25,45);
+			con.drawString("question",25,65);
+			
 		}
 	}
 	
