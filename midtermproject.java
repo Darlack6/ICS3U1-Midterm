@@ -27,6 +27,7 @@ public class midtermproject {
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(550,600,500,300);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 50); 
+			con.setTextColor(Color.WHITE);
 			con.setDrawColor(Color.WHITE);
 			con.setDrawFont(montserrat);
 			con.drawString("You successfully smuggled a fake bomb.",350,360);
