@@ -53,7 +53,7 @@ public class midtermproject {
 			con.clear();
 			con.drawImage(scene2,0,0);
 			con.setDrawColor(Color.WHITE);
-			con.fillRoundRect(20,20,300,200,10,10);
+			con.fillRoundRect(20,15,300,200,10,10);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 23); 
 			con.setDrawColor(Color.BLACK);
 			con.setDrawFont(montserrat);
@@ -61,18 +61,28 @@ public class midtermproject {
 			con.drawString("need to solve a math",25,50);
 			con.drawString("question",25,75);
 			con.drawString("Solve for x",25,125);
-			con.drawString("x = "+intRandomnum1+" * "+intRandomnum2,25,150);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 19);
 			con.setTextFont(montserrat);
+			con.drawString("x = "+intRandomnum1+" * "+intRandomnum2,25,150);
 			con.setTextColor(Color.GREEN);
-			con.print("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          ");
+			con.setDrawColor(Color.GREEN);
 			while(intx!=intRandomnum1*intRandomnum2){
+				con.clear();
+				con.print("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          ");
 				intx=con.readInt();
 				if(intx==intRandomnum1*intRandomnum2){
 					con.clear();
-					con.drawString("Correct!",100,100);
+					montserrat = con.loadFont("Montserrat-SemiBold.ttf", 18);
+					con.setDrawFont(montserrat);
+					con.drawString("Correct!",525,308);
 				}else{
-					con.drawString("Incorrect, try again",100,100);
+					con.clear();
+					montserrat = con.loadFont("Montserrat-SemiBold.ttf", 18);
+					con.setDrawFont(montserrat);
+					con.drawString("Incorrect",525,308);
+					con.sleep(1000);
+					con.setDrawColor(Color.BLACK);
+					con.drawRect(525,308,20,20);
 				}
 			}
 			
