@@ -7,10 +7,11 @@ public class midtermproject {
 	public static void main (String[] args) {
 		Console con = new Console("The Plane Hijack",1280,720);
 		scene1(con);
+		slidetransition(con);
+		scene2(con);
 		circletransition(con);
 		plotscene(con);
 		slidetransition(con);
-
 
 }
 	public static void plotscene(Console con){
@@ -21,6 +22,8 @@ public class midtermproject {
 		con.setDrawColor(Color.WHITE);
 		con.clear();
 		con.println("\n\n\n\n\n      The airport is booming, after all, the golden age of air travel just ended.\n  The year is 1971. Air travel is becoming more popular and affordable for civilians.\n\n                             But today, this flight is not your typical A to B flight. \n\n  Going through security, you start getting scared. If the guards realize, your plan\n                          that you spent years working out would be ruined.");
+		montserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
+		con.setDrawFont(montserrat);
 		con.drawString("Press [space] to continue",470,650);
 		charKeypress=con.getChar();
 		if(charKeypress==' '){
@@ -44,7 +47,7 @@ public class midtermproject {
 	public static void scene1(Console con){
 		char charKeypress;
 		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
-		BufferedImage scene2 = con.loadImage("scene2.png");
+		BufferedImage scene1 = con.loadImage("scene1.png");
 		con.setTextFont(montserrat);
 		con.println("\n\n\n\n\n\n                       Tomorrow is the big day, a day you've been planning for years,\n                             but first, you need to get the bomb from the safe"); 
 		con.drawString("Press [space] to continue",470,650);
@@ -52,9 +55,9 @@ public class midtermproject {
 		if(charKeypress==' '){
 			int intRandomnum1=(int)(Math.random() * 2+1);
 			int intRandomnum2=(int)(Math.random() * 2+1);
-			int intx = 0;
+			int intMathAnswer = 0;
 			con.clear();
-			con.drawImage(scene2,0,0);
+			con.drawImage(scene1,0,0);
 			con.setDrawColor(Color.WHITE);
 			con.fillRoundRect(20,15,300,170,10,10);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 23); 
@@ -69,13 +72,13 @@ public class midtermproject {
 			con.drawString("x = "+intRandomnum1+" * "+intRandomnum2,25,150);
 			con.setTextColor(Color.GREEN);
 			con.setDrawColor(Color.GREEN);
-			while(intx!=intRandomnum1*intRandomnum2){
+			while(intMathAnswer!=intRandomnum1*intRandomnum2){
 				con.clear();
 				con.print("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          ");
-				intx=con.readInt();
+				intMathAnswer=con.readInt();
 				montserrat = con.loadFont("Montserrat-SemiBold.ttf", 19);
 				con.setTextFont(montserrat);
-				if(intx==intRandomnum1*intRandomnum2){
+				if(intMathAnswer==intRandomnum1*intRandomnum2){
 					con.clear();
 					con.println("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          Correct!");
 				}else{
@@ -84,6 +87,37 @@ public class midtermproject {
 					con.sleep(1000);
 					con.clear();
 				}
+			}
+			
+		}
+	}
+	
+	public static void scene2(Console con){
+		int intBombPassword=10000;
+		BufferedImage scene2 = con.loadImage("scene2.png");
+		BufferedImage scene2point5 = con.loadImage("scene2point5.png");
+		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
+		con.setDrawFont(montserrat);
+		con.setTextColor(Color.BLACK);
+		con.setDrawColor(Color.WHITE);
+		con.clear();
+		con.drawImage(scene2,0,0);
+		montserrat = con.loadFont("Montserrat-SemiBold.ttf", 35);
+		con.setTextFont(montserrat);        
+		while(intBombPassword>9999){         
+			con.clear();
+			con.print("\n\n\n\n\n\n\n\n                                                             ");                                                                                        
+			intBombPassword = con.readInt();
+			if(intBombPassword<9999){
+				con.sleep(1500);
+				con.clear();
+				con.drawImage(scene2point5,0,0);
+				con.println("\n\n\n\n\n\n\n\n                                                        Registered");
+			}else{
+				con.sleep(750);
+				con.clear();
+				con.println("\n\n\n\n\n\n\n\n                                                          Too long");
+				con.sleep(1500);
 			}
 			
 		}
