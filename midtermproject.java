@@ -7,7 +7,6 @@ public class midtermproject {
 	public static void main (String[] args) {
 		Console con = new Console("The Plane Hijack",1280,720);
 		scene1(con);
-		con.sleep(2000);
 		circletransition(con);
 		plotscene(con);
 		slidetransition(con);
