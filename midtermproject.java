@@ -6,12 +6,13 @@ import java.awt.Font;
 public class midtermproject {
 	public static void main (String[] args) {
 		Console con = new Console("The Plane Hijack",1280,720);
-		scene1(con);
-		slidetransition(con);
-		scene2(con);
-		circletransition(con);
-		plotscene(con);
-		slidetransition(con);
+		//scene1(con);
+		//slidetransition(con);
+		//scene2(con);
+		//circletransition(con);
+		//plotscene(con);
+		//slidetransition(con);
+		scene3(con);
 
 }
 	public static void plotscene(Console con){
@@ -37,10 +38,10 @@ public class midtermproject {
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(470,650,500,300);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 50); 
-			con.repaint();
 			con.setDrawColor(Color.WHITE);
 			con.setDrawFont(montserrat);
 			con.drawString("You successfully smuggled a bomb.",145,290);
+			con.repaint();
 		}
 	}
 	
@@ -88,7 +89,6 @@ public class midtermproject {
 					con.clear();
 				}
 			}
-			
 		}
 	}
 	
@@ -121,6 +121,17 @@ public class midtermproject {
 			}
 			
 		}
+	}
+	
+	public static void scene3(Console con){
+		con.clear();
+		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
+		con.setDrawFont(montserrat);
+		con.setTextFont(montserrat);
+		con.setTextColor(Color.BLACK);
+		con.setDrawColor(Color.WHITE);
+		BufferedImage scene3 = con.loadImage("scene3.png");
+		con.drawImage(scene3,0,0);
 	}
 	
 	public static void slidetransition(Console con){
