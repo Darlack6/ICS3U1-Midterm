@@ -5,7 +5,7 @@ import java.awt.Font;
 
 public class midtermproject{
 	static int intBombPassword=10000;
-	//static intBombPassword=1234;
+	//static int intBombPassword=1234;
 	static int intBomb;
 	static String strAnnoucement;
 	public static void main (String[] args) {
@@ -30,7 +30,7 @@ public class midtermproject{
 		slidetransition(con);
 		scene4(con); //Shows the plane taking off and displays the note scene
 		charKeypress=con.getChar();
-		charKeypress=' ';
+		//charKeypress=' ';
 		if(charKeypress==' '){
 			Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
 			con.setTextFont(montserrat);
@@ -155,9 +155,15 @@ public class midtermproject{
 		con.drawString("Press [space] to continue",490,650);
 		charKeypress=con.getChar();
 		if(charKeypress==' '){
-			int intRandomnum1=(int)(Math.random() * 2+1);
-			int intRandomnum2=(int)(Math.random() * 2+1);
-			int intMathAnswer = 0;
+			double dblRandomnum1=(Math.random() * 2+1);
+			double dblRandomnum2=(Math.random() * 2+1);
+			double dblMathAnswer = 0;
+			dblRandomnum1=dblRandomnum1*100;
+			dblRandomnum1=Math.round(dblRandomnum1);
+			dblRandomnum1=dblRandomnum1/100;
+			dblRandomnum2=dblRandomnum2*100;
+			dblRandomnum2=Math.round(dblRandomnum2);
+			dblRandomnum2=dblRandomnum2/100;
 			con.clear();
 			con.drawImage(scene1,0,0);
 			con.setDrawColor(Color.WHITE);
@@ -171,16 +177,16 @@ public class midtermproject{
 			con.drawString("Solve for x",25,125);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 19);
 			con.setTextFont(montserrat);
-			con.drawString("x = "+intRandomnum1+" * "+intRandomnum2,25,150);
+			con.drawString("x = "+dblRandomnum1+" * "+dblRandomnum2,25,150);
 			con.setTextColor(Color.GREEN);
 			con.setDrawColor(Color.GREEN);
-			while(intMathAnswer!=intRandomnum1*intRandomnum2){
+			while(dblMathAnswer!=dblRandomnum1*dblRandomnum2){
 				con.clear();
 				con.print("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          ");
-				intMathAnswer=con.readInt();
+				dblMathAnswer=con.readDouble();
 				montserrat = con.loadFont("Montserrat-SemiBold.ttf", 19);
 				con.setTextFont(montserrat);
-				if(intMathAnswer==intRandomnum1*intRandomnum2){
+				if(dblMathAnswer==dblRandomnum1*dblRandomnum2){
 					con.clear();
 					con.println("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          Correct!");
 				}else{
