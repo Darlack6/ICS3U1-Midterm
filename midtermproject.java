@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class midtermproject{
-	static int intBombPassword=10000;
-	//static int intBombPassword=1234;
+	//static int intBombPassword=10000;
+	static int intBombPassword=1234;
 	static int intBomb;
 	static String strAnnoucement;
 	public static void main (String[] args) {
@@ -19,18 +19,18 @@ public class midtermproject{
         elapsed=0;
 		BufferedImage demandscene = con.loadImage("demandscene.png");
 		BufferedImage background = con.loadImage("background.png");
-		scene1(con); //User retrieves bomb from safe scene
-		con.sleep(2000);
-		slidetransition(con);
-		scene2(con); //User sets a bomb password scene
-		con.sleep(1000);
-		circletransition(con);
-		plotscene(con); //The plot of the story is told using text
-		con.sleep(3000);
-		slidetransition(con);
-		scene4(con); //Shows the plane taking off and displays the note scene
-		charKeypress=con.getChar();
-		//charKeypress=' ';
+		//scene1(con); //User retrieves bomb from safe scene
+		//con.sleep(2000);
+		//slidetransition(con);
+		//scene2(con); //User sets a bomb password scene
+		//con.sleep(1000);
+		//circletransition(con);
+		//plotscene(con); //The plot of the story is told using text
+		//con.sleep(3000);
+		//slidetransition(con);
+		//scene4(con); //Shows the plane taking off and displays the note scene
+		//charKeypress=con.getChar();
+		charKeypress=' ';
 		if(charKeypress==' '){
 			Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
 			con.setTextFont(montserrat);
@@ -106,9 +106,7 @@ public class midtermproject{
 				//scene5
 			}
 		}
-		
-
-}
+	}
 	public static void plotscene(Console con){
 		char charKeypress;
 		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
