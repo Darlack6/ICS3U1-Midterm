@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class midtermproject{
-	//static int intBombPassword=10000;
-	static int intBombPassword=1234;
+	static int intBombPassword=10000;
+	//static int intBombPassword=1234;
 	static int intBomb;
 	static String strAnnoucement;
 	static double dblMoney;
@@ -13,25 +13,25 @@ public class midtermproject{
 		Console con = new Console("The Plane Hijack",1280,720);
 		String strBargain, strDestination;
 		char charKeypress,charDemand;
-		int intbombcondition=2;
+		int intbombcondition=2, intCondition=0;
 		boolean boobombcondition = true;
         long start, end, elapsed;
 		double dblTime;
         elapsed=0;
 		BufferedImage demandscene = con.loadImage("demandscene.png");
 		BufferedImage background = con.loadImage("background.png");
-		//scene1(con); //User retrieves bomb from safe scene
-		//con.sleep(2000);
-		//slidetransition(con);
-		//scene2(con); //User sets a bomb password scene
-		//con.sleep(1000);
-		//circletransition(con);
-		//plotscene(con); //The plot of the story is told using text
-		//con.sleep(3000);
-		//slidetransition(con);
-		//scene4(con); //Shows the plane taking off and displays the note scene
-		//charKeypress=con.getChar();
-		charKeypress=' ';
+		scene1(con); //User retrieves bomb from safe scene
+		con.sleep(2000);
+		slidetransition(con);
+		scene2(con); //User sets a bomb password scene
+		con.sleep(1000);
+		circletransition(con);
+		plotscene(con); //The plot of the story is told using text
+		con.sleep(3000);
+		slidetransition(con);
+		scene4(con); //Shows the plane taking off and displays the note scene
+		charKeypress=con.getChar();
+		//charKeypress=' ';
 		if(charKeypress==' '){
 			Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
 			con.setTextFont(montserrat);
@@ -54,7 +54,7 @@ public class midtermproject{
 					end = System.currentTimeMillis();
 					elapsed = end - start;
 				}
-				if(intbombcondition==0 && elapsed<=30000){
+				if(intbombcondition==0 && elapsed<=10000){
 					scene8(con);
 					if(strAnnoucement.length()>16){
 						scene11(con);
@@ -80,13 +80,13 @@ public class midtermproject{
 					con.setTextColor(Color.BLACK);
 					con.println("\n\n\n\n\n\n\n                                                      The end\n\n                                Ending 1/6 | Thank you for playing!");
 
-				}else if(elapsed>30000){
+				}else if(elapsed>10000){
 					dblTime=elapsed/1000;
 					con.sleep(500);
 					con.clear();
 					con.drawImage(background,0,0);
 					con.setTextColor(Color.WHITE);
-					con.println("\n\n\n\n\n\n\n\n       Oh no! You took "+dblTime+" seconds, which is greater than 30 seconds");
+					con.println("\n\n\n\n\n\n\n\n       Oh no! You took "+dblTime+" seconds, which is greater than 10 seconds");
 					con.sleep(4500);
 					con.clear();
 					con.println("\n\n\n\n\n\n\n\n                     The bomb explodes and kills everyone on board");
@@ -107,16 +107,19 @@ public class midtermproject{
 					strBargain=con.readLine();
 					if(strBargain.equalsIgnoreCase("no")){
 						scene13(con);
+						intCondition=1;
 					}
 				}
-				scene14(con);
-				charKeypress=con.getChar();
-				if(charKeypress=='j'){
-					slidetransition(con);
-					scene16(con);
-				}else{
-					slidetransition(con);
-					scene15(con);
+				if(intCondition==0){
+					scene14(con);
+					charKeypress=con.getChar();
+					if(charKeypress=='j'){
+						slidetransition(con);
+						scene16(con);
+					}else{
+						slidetransition(con);
+						scene15(con);
+					}
 				}	
 			}
 		}
@@ -153,7 +156,7 @@ public class midtermproject{
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
 			con.setDrawColor(Color.WHITE);
-			con.sleep(3000);
+			con.sleep(2000);
 			con.drawString("The Plane Hijack | By Derek Lien",195,290);
 			con.repaint();
 		}
@@ -166,46 +169,51 @@ public class midtermproject{
 		con.setTextFont(montserrat);
 		con.println("\n\n\n\n\n\n                       Tomorrow is the big day, a day you've been planning for years,\n                             but first, you need to get the bomb from the safe"); 
 		con.drawString("Press [space] to continue",490,650);
-		charKeypress=con.getChar();
 		con.repaint();
+		charKeypress=con.getChar();
 		if(charKeypress==' '){
 			double dblRandomnum1=(Math.random() * 1+1);
 			double dblRandomnum2=(Math.random() * 1+1);
 			double dblMathAnswer = 0;
+			double dblCorrectMathAnswer;
 			dblRandomnum1=dblRandomnum1*100;
 			dblRandomnum1=Math.round(dblRandomnum1);
 			dblRandomnum1=dblRandomnum1/100;
 			dblRandomnum2=dblRandomnum2*100;
 			dblRandomnum2=Math.round(dblRandomnum2);
 			dblRandomnum2=dblRandomnum2/100;
+			dblCorrectMathAnswer=dblRandomnum1*dblRandomnum2;
+			dblCorrectMathAnswer=dblCorrectMathAnswer*100;
+			dblCorrectMathAnswer=Math.round(dblCorrectMathAnswer);
+			dblCorrectMathAnswer=dblCorrectMathAnswer/100;
 			con.clear();
 			con.drawImage(scene1,0,0);
 			con.setDrawColor(Color.WHITE);
-			con.fillRoundRect(20,15,300,170,10,10);
-			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 23); 
+			con.fillRoundRect(20,15,370,180,10,10);
+			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 21); 
 			con.setDrawColor(Color.BLACK);
 			con.setDrawFont(montserrat);
-			con.drawString("To unlock the safe, you", 25, 25);
-			con.drawString("need to solve a math",25,50);
-			con.drawString("question",25,75);
-			con.drawString("Solve for x",25,125);
+			con.drawString("To unlock the safe, you need", 25, 25);
+			con.drawString("to solve a math question",25,50);
+			con.drawString("Solve for x, round to hundredths",25,100);
 			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 19);
 			con.setTextFont(montserrat);
 			con.drawString("x = "+dblRandomnum1+" * "+dblRandomnum2,25,150);
 			con.setTextColor(Color.GREEN);
 			con.setDrawColor(Color.GREEN);
-			while(dblMathAnswer!=dblRandomnum1*dblRandomnum2){
+			while(dblMathAnswer!=dblCorrectMathAnswer){
 				con.clear();
 				con.print("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          ");
 				dblMathAnswer=con.readDouble();
 				montserrat = con.loadFont("Montserrat-SemiBold.ttf", 19);
 				con.setTextFont(montserrat);
-				if(dblMathAnswer==dblRandomnum1*dblRandomnum2){
+				if(dblMathAnswer==dblCorrectMathAnswer){
 					con.clear();
 					con.println("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          Correct!");
 				}else{
 					con.clear();
 					con.println("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          Incorrect");
+					con.println(dblCorrectMathAnswer);
 					con.sleep(1000);
 					con.clear();
 				}
@@ -327,7 +335,7 @@ public class midtermproject{
 			con.setDrawColor(Color.BLACK);
 			con.fillRect(0,0,1280,720);
 			con.clear();
-			con.println("\n\n\n\n\n\n\n\n  The cabin crew do not believe you, you set the bomb off to explode in 2 minutes.\n              After the cabin crew talked amongst themselves for 1.5 minutes,\n                               they tell you to deactivate it and they'll let you in"); 
+			con.println("\n\n\n\n\n\n\n\n  The cabin crew do not believe you, you set the bomb off to explode in 2 minutes.\n    After the cabin crew talked amongst themselves for 1 minute and 45 seconds,\n                               they tell you to deactivate it and they'll let you in"); 
 			con.setDrawColor(Color.WHITE);
 			con.drawString("Press [space] to continue",490,650);
 			con.repaint();
@@ -359,6 +367,7 @@ public static void scene8(Console con){
 	con.setDrawFont(montserrat);
 	con.setDrawColor(Color.WHITE);
 	con.drawString("Press [space] to continue",490,650);
+	con.repaint();
 	charKeypress=con.getChar();
 	if(charKeypress==' '){
 		con.clear();
