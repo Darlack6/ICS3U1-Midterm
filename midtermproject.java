@@ -11,7 +11,7 @@ public class midtermproject{
 	static double dblMoney;
 	public static void main (String[] args) {
 		Console con = new Console("The Plane Hijack",1280,720);
-		String strDemand, strBargain;
+		String strDemand, strBargain, strDestination;
 		char charKeypress;
 		int intbombcondition=2;
 		boolean boobombcondition = true;
@@ -112,7 +112,13 @@ public class midtermproject{
 						scene13(con);
 					}
 				}
-				//scene14
+				scene14(con);
+				charKeypress=con.getChar();
+				if(charKeypress=='j'){
+					scene16(con);
+				}else{
+					//scene 15
+				}	
 			}
 		}
 	}
@@ -500,6 +506,84 @@ public static void scene8(Console con){
 			con.fillRect(0,0,1280,720);
 			con.setTextColor(Color.BLACK);
 			con.println("\n\n\n\n\n\n\n                                                      The end\n\n                                Ending 4/6 | Thank you for playing!");
+        }
+	}
+
+	public static void scene14(Console con) {
+		char charKeypress;
+        String strDestination;
+
+		BufferedImage scene14=con.loadImage("scene14.png");
+        BufferedImage destination = con.loadImage("destination.png");
+        BufferedImage scene14point1=con.loadImage("scene14point1.png");
+        BufferedImage jump = con.loadImage("jump.png");
+
+		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 40); 
+		con.setTextFont(montserrat);
+		con.setTextColor(Color.BLACK);
+		con.setDrawColor(Color.WHITE);
+		
+		con.clear();
+		con.drawImage(scene14,0,0);
+		montserrat = con.loadFont("Montserrat-SemiBold.ttf", 20); 
+		con.drawString("Press [space] to continue",490,650);
+		con.setDrawFont(montserrat);
+		con.repaint();
+
+		charKeypress = con.getChar();
+		if(charKeypress==' '){
+            charKeypress='i';
+			con.clear();
+            con.drawImage(destination,0,0);
+            con.repaint();
+            con.print("\n\n\n\n                                     ");
+            strDestination=con.readLine();
+            con.drawImage(scene14point1,0,0);
+            con.drawString("Press [space] to continue",490,650);
+            con.repaint();
+            charKeypress = con.getChar();
+            if(charKeypress==' '){
+				con.clear();
+                con.drawImage(jump,0,0);
+                con.repaint();
+            }
+        }
+	}
+
+	public static void scene16(Console con){
+		char charKeypress;
+        int intCounterx, intCountery=-200;
+
+		BufferedImage scene16=con.loadImage("scene16.png");
+        BufferedImage parachute = con.loadImage("parachute.png");
+        BufferedImage scene16point1=con.loadImage("scene16point1.png");
+
+		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 35); 
+		con.setTextFont(montserrat);
+		con.setTextColor(Color.BLACK);
+		con.clear();
+	    
+        for(intCounterx=1080;intCounterx>-780;intCounterx=intCounterx-4){
+		    con.drawImage(scene16,0,0);
+		    con.drawImage(parachute,intCounterx,intCountery);
+		    if(intCounterx%4==0){
+			    intCountery++;
+		        }
+		    con.repaint();
+		    con.sleep(10);
+		}
+        slidetransition(con);
+        con.drawImage(scene16point1,0,0);
+        montserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
+        con.setDrawFont(montserrat);
+		con.setDrawColor(Color.WHITE);
+        con.drawString("Press [space] to continue",490,650);
+        con.repaint();
+        charKeypress=con.getChar();
+		if(charKeypress==' '){
+			con.clear();
+            con.fillRect(0,0,1280,720);
+			con.println("\n\n\n\n\n\n\n                                                      The end\n\n                                Ending 5/6 | Thank you for playing!");
         }
 	}
 
