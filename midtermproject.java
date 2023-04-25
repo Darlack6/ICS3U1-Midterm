@@ -112,6 +112,7 @@ public class midtermproject{
 				}
 				if(intCondition==0){
 					scene14(con);
+					charKeypress='i';
 					charKeypress=con.getChar();
 					if(charKeypress=='j'){
 						slidetransition(con);
@@ -139,7 +140,7 @@ public class midtermproject{
 		con.repaint();
 		if(charKeypress==' '){
 			con.clear();
-			con.println("\n\n\n   As you approach the scanner, you start fiddling with the coins in your pocket.\nYou hesitantly place your luggage and briefcase on the belt and hope for the best. \n\n   The luggage disappears under the machine. You walk through the screener,\n          but it starts beeping. You get worried as you run through scenarios of\n                                                        what went wrong.\n\n                    But then you remember you still had coins in your pocket.\n       After depositing the change, you walk through the screener and are cleared.\n\n                                      Your luggage also passed the machine.\n\n                                                 You let out a sigh of relief.");
+			con.println("\n\n\n   As you approach the scanner, you start fiddling with the coins in your pocket.\nYou hesitantly place your luggage and briefcase on the belt and hope for the best. \n\n   The luggage disappears under the machine. You walk through the screener,\n          but it starts beeping. You get worried as you run through scenarios of\n                                                        what went wrong.\n\n                    But then you remember you still had coins in your pocket.\n       After depositing the change, you walk through the screener and are cleared.\n\n                                        Your luggage also passed the machine.\n\n                                                   You let out a sigh of relief.");
 			charKeypress='i';
 		}
 		charKeypress=con.getChar();
@@ -213,7 +214,6 @@ public class midtermproject{
 				}else{
 					con.clear();
 					con.println("\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                          Incorrect");
-					con.println(dblCorrectMathAnswer);
 					con.sleep(1000);
 					con.clear();
 				}
@@ -253,7 +253,7 @@ public class midtermproject{
 	
 	public static void scene4(Console con){
 		int intCounterx;
-		int intCountery=480;
+		int intCountery=120;
 		char charKeypress;
 		con.clear();
 		con.setBackgroundColor(Color.BLACK);
@@ -263,20 +263,23 @@ public class midtermproject{
 		con.setDrawFont(montserrat);
 		con.setTextColor(Color.WHITE);
 		con.setDrawColor(Color.WHITE);
+		BufferedImage scene4 = con.loadImage("scene4.png");
 		BufferedImage airport = con.loadImage("airport.png");
 		BufferedImage plane = con.loadImage("plane.png");
 		BufferedImage note = con.loadImage("note.png");
-		con.println("\n\n\n\n\n\n\n\n    You board the plane, you felt a bit special this flight so you bought a first class\n              ticket, you sit in seat 1C and close your eyes to catch up on some sleep");
+		con.drawImage(scene4,0,0);
 		con.drawString("Press [space] to continue",490,650);
 		con.repaint();
 		charKeypress=con.getChar();
 		if(charKeypress==' '){
 			con.clear();
 			con.drawImage(airport,0,0);
-			for(intCounterx=-800;intCounterx<1280;intCounterx=intCounterx+4){
+			for(intCounterx=-800;intCounterx<1180;intCounterx=intCounterx+4){
 				con.drawImage(airport,0,0);
 				con.drawImage(plane,intCounterx,intCountery);
-				if(intCounterx%4==0){
+                if(intCounterx<-700){
+                    intCountery=120;  
+                }else if(intCounterx%8==0){
 					intCountery--;
 				}
 				con.repaint();
@@ -309,10 +312,9 @@ public class midtermproject{
 		con.repaint();
 		charKeypress = con.getChar();
 		if(charKeypress==' '){
-			con.drawImage(money,0,0);
+			con.drawImage(money,0,1);
 			con.clear();
-			con.setTextColor(Color.BLACK);
-			con.print("\n\n\n\n\n\n\n                                       I want: $ ");
+			con.print("\n\n\n\n\n\n\n                               I want: $ ");
 			con.repaint();
 			dblMoney=con.readDouble();
 		}
@@ -322,6 +324,7 @@ public class midtermproject{
 		con.clear();
 		char charKeypress;
 		BufferedImage scene6 = con.loadImage("scene6.png");
+		BufferedImage scene7 = con.loadImage("scene7.png");
 		BufferedImage bombscene = con.loadImage("bombscene.png");
 		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
 		con.setTextFont(montserrat);
@@ -332,29 +335,28 @@ public class midtermproject{
 		con.repaint();
 		charKeypress = con.getChar();
 		if(charKeypress==' '){
-			con.setDrawColor(Color.BLACK);
-			con.fillRect(0,0,1280,720);
 			con.clear();
-			con.println("\n\n\n\n\n\n\n\n  The cabin crew do not believe you, you set the bomb off to explode in 2 minutes.\n    After the cabin crew talked amongst themselves for 1 minute and 45 seconds,\n                               they tell you to deactivate it and they'll let you in"); 
+			con.drawImage(scene7,0,0);
 			con.setDrawColor(Color.WHITE);
 			con.drawString("Press [space] to continue",490,650);
 			con.repaint();
 			charKeypress='i';
+			charKeypress = con.getChar();
+			if(charKeypress==' '){
+				montserrat = con.loadFont("Montserrat-SemiBold.ttf", 35);
+				con.setTextFont(montserrat);    
+				con.setDrawColor(Color.BLACK);
+				con.setTextColor(Color.BLACK);
+				con.fillRect(470,650,500,300);
+				con.clear();
+				con.drawImage(bombscene,0,0);
+				con.print("\n\n\n\n\n\n\n\n                                                              ");
 		}
-		charKeypress = con.getChar();
-		if(charKeypress==' '){
-			montserrat = con.loadFont("Montserrat-SemiBold.ttf", 35);
-			con.setTextFont(montserrat);    
-			con.setDrawColor(Color.BLACK);
-			con.setTextColor(Color.BLACK);
-			con.fillRect(470,650,500,300);
-			con.clear();
-			con.drawImage(bombscene,0,0);
-			con.print("\n\n\n\n\n\n\n\n                                                              ");
 	}
 }
 
 public static void scene8(Console con){
+	BufferedImage scene8 = con.loadImage("scene8.png");
 	BufferedImage background = con.loadImage("background.png");
 	BufferedImage annoucement = con.loadImage("annoucement.png");
 	char charKeypress;
@@ -362,7 +364,7 @@ public static void scene8(Console con){
 	con.clear();
 	con.drawImage(background,0,0);
 	con.setTextColor(Color.WHITE);
-	con.println("\n\n\n\n\n\n\n\n  After defusing the bomb, the cabin crew allows you into the cockpit");
+	con.drawImage(scene8,0,0);
 	Font montserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
 	con.setDrawFont(montserrat);
 	con.setDrawColor(Color.WHITE);
@@ -371,10 +373,10 @@ public static void scene8(Console con){
 	charKeypress=con.getChar();
 	if(charKeypress==' '){
 		con.clear();
-		con.drawImage(annoucement,0,0);
+		con.drawImage(annoucement,0,1);
 		con.repaint();
-		con.setTextColor(Color.BLACK);
-		con.print("\n\n\n\n\n\n\n\n                              PA Annoucement: ");
+		con.setTextColor(Color.WHITE);
+		con.print("\n\n\n\n\n\n\n\n\n                              PA Annoucement: ");
 		strAnnoucement=con.readLine();
 	}
 }
@@ -407,6 +409,7 @@ public static void scene8(Console con){
 		con.drawImage(scene10,0,0);
 		con.setDrawFont(montserrat);
 		con.setDrawColor(Color.WHITE);
+		con.setTextColor(Color.BLACK);
 		con.drawString("Press [space] to continue",490,650);
 		con.repaint();
 		charKeypress=con.getChar();
@@ -419,7 +422,7 @@ public static void scene8(Console con){
 
 	public static void scene11(Console con){
 		char charKeypress;
-        int intCounterx,intCountery=300;
+        int intCounterx,intCountery=0;
 		Font montserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
 		
 		BufferedImage scene11 = con.loadImage("scene11.png");
@@ -451,11 +454,7 @@ public static void scene8(Console con){
 				for(intCounterx=-800;intCounterx<1280;intCounterx=intCounterx+4){
 					con.drawImage(airport,0,0);
 					con.drawImage(plane,intCounterx,intCountery);
-					if(intCounterx>-200){
-						if(intCounterx%10==0||intCounterx%8==0){
-							intCountery--;
-							}
-					}else if(intCounterx%16==0){
+					if(intCounterx<-250){
 						intCountery++;
 					}
 					con.repaint();
@@ -464,6 +463,8 @@ public static void scene8(Console con){
 				slidetransition(con);
 				con.drawImage(scene11point2,0,0);
 				con.setDrawColor(Color.WHITE);
+                montserrat = con.loadFont("Montserrat-SemiBold.ttf", 20); 
+                con.setDrawFont(montserrat);
 				con.drawString("Press [space] to continue",490,650);
 				con.repaint();
 				charKeypress=con.getChar();
@@ -544,9 +545,10 @@ public static void scene8(Console con){
 			con.clear();
             con.drawImage(destination,0,0);
             con.repaint();
-            con.print("\n\n\n\n                                     ");
+            con.print("\n\n\n\n                                                  ");
             strDestination=con.readLine();
             con.drawImage(scene14point1,0,0);
+			con.clear();
             con.drawString("Press [space] to continue",490,650);
             con.repaint();
             charKeypress = con.getChar();
@@ -641,7 +643,7 @@ public static void scene8(Console con){
 
 	public static void slidetransition(Console con){
 		int intcounter;
-		con.setDrawColor(Color.BLACK);
+		con.setDrawColor(new Color(0,0,0));
 		con.clear();
 		for(intcounter=0;intcounter<1285;intcounter=intcounter+3){
 			con.fillRect(0,0,intcounter,720);
