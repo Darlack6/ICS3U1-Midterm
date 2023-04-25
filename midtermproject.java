@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class midtermproject{
-	static int intBombPassword=10000;
-	//static int intBombPassword=1234;
+	//static int intBombPassword=10000;
+	static int intBombPassword=1234;
 	static int intBomb;
 	static String strAnnoucement;
 	static double dblMoney;
 	public static void main (String[] args) {
 		Console con = new Console("The Plane Hijack",1280,720);
-		String strDemand, strBargain, strDestination;
-		char charKeypress;
+		String strBargain, strDestination;
+		char charKeypress,charDemand;
 		int intbombcondition=2;
 		boolean boobombcondition = true;
         long start, end, elapsed;
@@ -36,11 +36,9 @@ public class midtermproject{
 			Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 30); 
 			con.setTextFont(montserrat);
 			con.drawImage(demandscene,0,0); //Shows the scene where the user choses between option A. and B.
-			con.setTextColor(Color.BLACK);
-			con.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                             Option: ");
-			strDemand=con.readLine();
-			if(strDemand.equalsIgnoreCase("a")){
-				con.sleep(500);
+			con.repaint();
+			charDemand=con.getChar();
+			if(charDemand=='a'){;
 				circletransition(con);
 				scene6and7(con);
 				start = System.currentTimeMillis();
@@ -101,8 +99,7 @@ public class midtermproject{
 					con.setTextColor(Color.BLACK);
 					con.println("\n\n\n\n\n\n\n                                                      The end\n\n                                Ending 1/6 | Thank you for playing!");
 				}
-			}else if(strDemand.equalsIgnoreCase("b")){
-				con.sleep(500);
+			}else if(charDemand=='b'){
 				circletransition(con);
 				scene5(con);
 				if(dblMoney>200000){
@@ -115,9 +112,11 @@ public class midtermproject{
 				scene14(con);
 				charKeypress=con.getChar();
 				if(charKeypress=='j'){
+					slidetransition(con);
 					scene16(con);
 				}else{
-					//scene 15
+					slidetransition(con);
+					scene15(con);
 				}	
 			}
 		}
@@ -547,6 +546,50 @@ public static void scene8(Console con){
                 con.drawImage(jump,0,0);
                 con.repaint();
             }
+        }
+	}
+
+	public static void scene15(Console con){
+		char charKeypress;
+        int intCounterx, intI=4, intCountery=-100;
+
+		BufferedImage scene15 = con.loadImage("scene15.png");
+        BufferedImage landingplane = con.loadImage("landingplane.png");
+        BufferedImage scene15point1=con.loadImage("scene15point1.png");
+
+		Font montserrat = con.loadFont("Montserrat-SemiBold.ttf", 35); 
+		con.setTextFont(montserrat);
+		con.setTextColor(Color.BLACK);
+		con.clear();
+	    
+        for(intCounterx=-800;intCounterx<1000;intCounterx=intCounterx+intI){
+		    con.drawImage(scene15,0,0);
+		    con.drawImage(landingplane,intCounterx,intCountery);
+		    if(intCounterx<-440){
+			    intCountery++;
+		        }
+		    else if(intCounterx<300){
+				intI=3;
+				con.repaint();
+			}else{
+				intI=2;
+				con.repaint();
+			}
+		    con.repaint();
+		    con.sleep(10);
+		}
+        slidetransition(con);
+        con.drawImage(scene15point1,0,0);
+        montserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
+        con.setDrawFont(montserrat);
+        con.setDrawColor(Color.WHITE);
+        con.drawString("Press [space] to continue",490,650);
+        con.repaint();
+        charKeypress=con.getChar();
+		if(charKeypress==' '){
+			con.clear();
+            con.fillRect(0,0,1280,720);
+			con.println("\n\n\n\n\n\n\n                                                      The end\n\n                                Ending 6/6 | Thank you for playing!");
         }
 	}
 
