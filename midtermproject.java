@@ -1,6 +1,6 @@
 //Story name: The Plane Hijack
 //Programmer name: Derek Lien
-//Version number: RC1
+//Version number: 1.00
 
 import arc.*;
 import java.awt.image.BufferedImage;
@@ -9,7 +9,6 @@ import java.awt.Font;
 
 public class midtermproject{
 	static int intBombPassword=10000;
-	//static int intBombPassword=1234;
 	static int intBomb;
 	static String strAnnoucement;
 	static double dblMoney;
@@ -266,7 +265,7 @@ public class midtermproject{
 				con.clear();
 				con.drawImage(imgScene2Point5,0,0);
 				con.println("\n\n\n\n\n\n\n\n                                                        Registered");
-			}else{ //tells the user thier combination is too long 
+			}else{ //tells the user their combination is too long 
 				con.sleep(750);
 				con.clear();
 				con.println("\n\n\n\n\n\n\n\n                                                          Too long");
@@ -392,55 +391,57 @@ public class midtermproject{
 		}
 	}
 }
-//Purpose: Allows the user to make an announcement on the PA
-public static void scene8(Console con){
-	//initializes variables
-	BufferedImage imgScene8 = con.loadImage("scene8.png");
-	BufferedImage imgBackground = con.loadImage("background.png");
-	BufferedImage imgAnnoucement = con.loadImage("annoucement.png");
-	char chrKeypress;
+	//Purpose: Allows the user to make an announcement on the PA
+	public static void scene8(Console con){
+		//initializes variables
+		BufferedImage imgScene8 = con.loadImage("scene8.png");
+		BufferedImage imgBackground = con.loadImage("background.png");
+		BufferedImage imgAnnoucement = con.loadImage("annoucement.png");
+		char chrKeypress;
 
-	//prepares to display graphics
-	con.sleep(500);
-	con.clear();
-	con.drawImage(imgBackground,0,0);
-	con.setTextColor(Color.WHITE);
-
-	//draws string and images
-	con.drawImage(imgScene8,0,0);
-	Font fntMontserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
-	con.setDrawFont(fntMontserrat);
-	con.setDrawColor(Color.WHITE);
-	con.drawString("Press [space] to continue",490,650);
-	con.repaint();
-	chrKeypress=con.getChar();//fetch user's key
-	if(chrKeypress==' '){//asks user what they want to say over the PA
+		//prepares to display graphics
+		con.sleep(500);
 		con.clear();
-		con.drawImage(imgAnnoucement,0,1);
-		con.repaint();
+		con.drawImage(imgBackground,0,0);
 		con.setTextColor(Color.WHITE);
-		con.print("\n\n\n\n\n\n\n\n\n                              PA Annoucement: ");
-		strAnnoucement=con.readLine();
+
+		//draws string and images
+		con.drawImage(imgScene8,0,0);
+		Font fntMontserrat=con.loadFont("Montserrat-SemiBold.ttf",20);
+		con.setDrawFont(fntMontserrat);
+		con.setDrawColor(Color.WHITE);
+		con.drawString("Press [space] to continue",490,650);
+		con.repaint();
+		chrKeypress=con.getChar();//fetch user's key
+		if(chrKeypress==' '){//asks user what they want to say over the PA
+			con.clear();
+			con.drawImage(imgAnnoucement,0,1);
+			con.repaint();
+			con.setTextColor(Color.WHITE);
+			con.print("\n\n\n\n\n\n\n\n\n                              PA Annoucement: ");
+			strAnnoucement=con.readLine();
+		}
 	}
-}
+	
 	//Purpose: Shows plane crashing
 	public static void scene9(Console con){ 
-	//initializes variables
-	BufferedImage imgSky = con.loadImage("sky.png");
-	BufferedImage imgExplodingPlane = con.loadImage("explodingplane.png");
-	int intCounterx;
-	int intCountery=-200;
-	//loop to draw plane crashing
-	for(intCounterx=-800;intCounterx<1280;intCounterx=intCounterx+4){
-		con.drawImage(imgSky,0,0);
-		con.drawImage(imgExplodingPlane,intCounterx,intCountery);
-		if(intCounterx%4==0){
-			intCountery++;
-		}
-		con.repaint();
-		con.sleep(10);
+		//initializes variables
+		BufferedImage imgSky = con.loadImage("sky.png");
+		BufferedImage imgExplodingPlane = con.loadImage("explodingplane.png");
+		int intCounterx;
+		int intCountery=-200;
+		//loop to draw plane crashing
+		for(intCounterx=-800;intCounterx<1280;intCounterx=intCounterx+4){
+			con.drawImage(imgSky,0,0);
+			con.drawImage(imgExplodingPlane,intCounterx,intCountery);
+			if(intCounterx%4==0){
+				intCountery++;
+			}
+			con.repaint();
+			con.sleep(10);
 		}
 	}
+	
 	//Displays the scene where the user sucessfully hijacks the plane and is able to enjoy complementary plane food
 	public static void scene10(Console con){
 		//initializes variables 
